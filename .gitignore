@@ -1,3 +1,5 @@
 volumes/database-data
 volumes/logs
+*.pem
+*.csr
 .idea

@@ -49,3 +49,15 @@ $ make image
 $ cd -
 $ docker-compose up -d
 ```
+
+2. Generate cert files
+
+```shell
+$ ./gen-cert
+```
+
+3. Start services
+
+```shell
+$ docker-compose up -d
+```

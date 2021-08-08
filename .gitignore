@@ -1,0 +1,3 @@
+volumes/database-data
+volumes/logs
+.idea

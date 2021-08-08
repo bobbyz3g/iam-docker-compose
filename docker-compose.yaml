@@ -1,0 +1,30 @@
+version: "3"
+services:
+  iam-api-server:
+    image: marmotedu/iam-apiserver-amd64:v1.0.4-4-g210a49c
+    container_name: iam.api.marmotedu.com
+    volumes:
+      - ${PWD}/volumes/iam-config:/root/.iam/
+      - ${PWD}/volumes/logs:/var/log/iam
+    ports:
+      - "8081:8081"
+      - "8080:8080"
+      - "8443:8443"
+    networks:
+      - iam
+
+  iam-authz-server:
+    image: marmotedu/iam-apiserver-amd64:v1.0.4-4-g210a49c
+    container_name: iam.authz.marmotedu.com
+    volumes:
+      - ${PWD}/volumes/iam-config:/root/.iam/
+      - ${PWD}/volumes/logs:/var/log/iam
+    ports:
+      - "9443:9443"
+      - "9090:9090"
+    networks:
+      - iam
+
+networks:
+  iam:
+    external: true

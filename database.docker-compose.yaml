@@ -1,0 +1,38 @@
+version: "3.0"
+services:
+  mariadb:
+    image: mariadb
+    container_name: mysql.iam
+    restart: always
+    networks:
+      - iam
+    environment:
+      MARIADB_ROOT_PASSWORD: 1qaz2ws
+    volumes:
+      - ${PWD}/volumes/database-data/mysql:/var/lib/mysql
+
+  redis:
+    image: redis
+    container_name: redis.iam
+    restart: always
+    networks:
+      - iam
+    command: redis-server --requirepass 1qaz2ws
+    volumes:
+      - ${PWD}/volumes/database-data/redis:/data
+
+  mongo:
+    image: mongo
+    container_name: mongo.iam
+    restart: always
+    networks:
+      - iam
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 1qaz2ws
+    volumes:
+      - ${PWD}/volumes/database-data/mongo:/data/db
+
+networks:
+  iam:
+    external: true

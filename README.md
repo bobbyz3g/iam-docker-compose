@@ -53,7 +53,10 @@ $ docker-compose up -d
 2. Generate cert files
 
 ```shell
-$ ./gen-cert
+$ ./gen-cert cert::init
+$ ./gen-cert cert::gen iam-apiserver
+$ ./gen-cert cert::gen iam-authz-server
+$ ./gen-cert cert::gen admin
 ```
 
 3. Start services
